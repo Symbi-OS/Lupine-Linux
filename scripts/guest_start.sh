@@ -145,6 +145,11 @@ if [ -f /usr/local/go/bin/go ]; then
     exit
 fi
 
+if [ -f /usr/bin/sqlite3 ]; then
+    /usr/bin/sqlite3
+    exit
+fi
+
 if [ -f /usr/local/bin/traefik ]; then
     sh guest_net.sh
     /usr/local/bin/traefik
