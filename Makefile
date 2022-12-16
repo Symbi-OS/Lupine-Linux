@@ -17,11 +17,11 @@ patch-linux:
 		git apply ../kml_4.0_001.diff
 
 build-linux:
-	docker run -it -v "$(PWD)/linux":/linux-volume --rm a74731248/linuxbuild:latest	\
+	docker run -it --privileged -v "$(PWD)/linux":/linux-volume --rm a74731248/linuxbuild:latest	\
 		bash -c "make -j8 -C /linux-volume"
 
 build-linux-lto:
-	docker run -it -v "$(PWD)/linux-misc":/linux-volume --rm a74731248/linuxbuild:latest	\
+	docker run -it --privileged -v "$(PWD)/linux-misc":/linux-volume --rm a74731248/linuxbuild:latest	\
 		bash -c "make -j8 -C /linux-volume"
 
 run-hello:
