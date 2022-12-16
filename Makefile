@@ -4,7 +4,7 @@ qemu-test:
 
 build-env-image:
 	cd docker && \
-		docker build . -t linuxbuild:latest -f build-env.Dockerfile
+		docker build . -t a74731248/linuxbuild:latest -f build-env.Dockerfile
 
 setup-osv:
 	git submodule update --init --recursive
@@ -17,11 +17,11 @@ patch-linux:
 		git apply ../kml_4.0_001.diff
 
 build-linux:
-	docker run -it -v "$(PWD)/linux":/linux-volume --rm linuxbuild:latest	\
+	docker run -it -v "$(PWD)/linux":/linux-volume --rm a74731248/linuxbuild:latest	\
 		bash -c "make -j8 -C /linux-volume"
 
 build-linux-lto:
-	docker run -it -v "$(PWD)/linux-misc":/linux-volume --rm linuxbuild:latest	\
+	docker run -it -v "$(PWD)/linux-misc":/linux-volume --rm a74731248/linuxbuild:latest	\
 		bash -c "make -j8 -C /linux-volume"
 
 run-hello:
