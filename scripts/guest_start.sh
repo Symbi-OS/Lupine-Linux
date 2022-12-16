@@ -275,6 +275,7 @@ fi
 
 if which redis-server; then
     sh guest_net.sh
+    /load_entropy
     cp `which redis-server` /trusted
     if echo $@ | grep trusted - > /dev/null; then
         echo ========KML=========
